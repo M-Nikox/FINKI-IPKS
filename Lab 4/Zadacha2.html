@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zadacha2</title>
+    <script>
+        function generateOptions() {
+            let itemInput = document.getElementById("itemInput").value;
+            let options = document.getElementById("options").value;
+            let optionsSelector = document.getElementById("optionsSelector");
+
+            optionsSelector.innerHTML = "";
+
+            if (itemInput.trim() !== "") {
+                let items = itemInput.split(",");
+
+                for (let i = 0; i < items.length; i++) {
+                    let option = document.createElement(options === "radio" ? "input" : "input");
+                    option.type = options;
+                    option.name = "options";
+                    option.value = items[i].trim();
+
+                    let label = document.createElement("label");
+                    label.appendChild(option);
+                    label.appendChild(document.createTextNode(items[i].trim()));
+
+                    optionsSelector.appendChild(label);
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div style="width:250px;">
+    <label for="itemInput">Items: </label>
+    <input type="text" id="itemInput">
+    <br>
+
+    <label for="options">Type: </label><select id="options">
+        <option value="radio">Radio button</option>
+        <option value="checkbox">Check box</option>
+    </select>
+    <br>
+
+    <button onclick="generateOptions()">Прикажи</button>
+
+    <div id="optionsSelector"></div>
+</div>
+</body>
+</html>

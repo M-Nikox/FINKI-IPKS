@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Zadacha3</title>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const form = document.getElementById('backgroundForm');
+      const valueInput = document.getElementById('value');
+      const colorRadio = document.getElementById('color');
+      const imageRadio = document.getElementById('image');
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const value = valueInput.value;
+
+        if (colorRadio.checked) {
+          document.body.style.background = value;
+        } else if (imageRadio.checked) {
+          document.body.style.background = `url('${value}')`;
+          document.body.style.backgroundSize = 'cover';
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+
+<h1>Промена на позадина</h1>
+
+<form id="backgroundForm">
+  <label>
+    <input type="radio" name="bgType" id="color" checked>
+    Color
+  </label>
+  <label>
+    <input type="radio" name="bgType" id="image">
+    Image
+  </label>
+  <label for="value">Value:</label>
+  <input type="text" id="value" required>
+  <button type="submit">Промени</button>
+</form>
+
+</body>
+</html>

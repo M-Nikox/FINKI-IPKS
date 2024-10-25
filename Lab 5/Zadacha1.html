@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<head>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const aInput = document.getElementById('a');
+            const bInput = document.getElementById('b');
+            const plusRadio = document.getElementById('plus');
+            const minusRadio = document.getElementById('minus');
+            const mnozRadio = document.getElementById('mnoz');
+            const delRadio = document.getElementById('del');
+            const sinRadio = document.getElementById('sin');
+            const cosRadio = document.getElementById('cos');
+            const tgRadio = document.getElementById('tg');
+            const celRadio = document.getElementById('cel');
+            const stepenRadio = document.getElementById('stepen');
+            const korenRadio = document.getElementById('koren');
+            const calculateButton = document.querySelector('button');
+            const resultOutput = document.getElementById('rezultat');
+
+            calculateButton.addEventListener('click', function () {
+                const a = parseFloat(aInput.value);
+                const b = parseFloat(bInput.value);
+
+                let result;
+
+                if (plusRadio.checked) {
+                    result = a + b;
+                } else if (minusRadio.checked) {
+                    result = a - b;
+                } else if (mnozRadio.checked) {
+                    result = a * b;
+                } else if (delRadio.checked) {
+                    if (b === 0) {
+                        alert('Делење со 0');
+                        return;
+                    }
+                    result = a / b;
+                } else if (sinRadio.checked) {
+                    result = Math.sin(a);
+                } else if (cosRadio.checked) {
+                    result = Math.cos(a);
+                } else if (tgRadio.checked) {
+                    result = Math.tan(a);
+                } else if (celRadio.checked) {
+                    result = Math.floor(a);
+                } else if (stepenRadio.checked) {
+                    result = Math.pow(a, b);
+                } else if (korenRadio.checked) {
+                    result = Math.sqrt(a);
+                }
+
+                resultOutput.textContent = Number.isInteger(result) ? result : result.toFixed(2);
+            });
+        });
+    </script>
+</head>
+<body>
+<h1>Калкулатор</h1>
+<div>
+    <div style="text-align:left; float:left">
+        <p>а <input id="a" style="width:15px"/>
+            b <input id="b" style="width:15px"/></p>
+        <p>
+            <input id="plus" type="radio" name="oper" checked>a+b
+            <input id="minus" type="radio" name="oper">a-b
+            <input id="mnoz" type="radio" name="oper" >a*b
+            <input id="del" type="radio" name="oper" >a/b
+            <br>
+            <input id="sin" type="radio" name="oper">sin(a)
+            <input id="cos" type="radio" name="oper">cos(a)
+            <input id="tg" type="radio" name="oper">tg(a)
+            <br>
+            <input id="cel" type="radio" name="oper">[a]
+            <input id="stepen" type="radio" name="oper">a<sup>b</sup>
+            <input id="koren" type="radio" name="oper">&radic;<span style="text-decoration:
+overline">a</span>
+        </p>
+        <button>Пресметај</button>
+        <p id="rezultat"></p>
+    </div>
+</div>
+<br/>
+</body>
+</html>

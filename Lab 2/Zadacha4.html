@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script>
+    function add() {
+      let num1real = parseFloat(document.getElementById("num1").value);
+      let num1imaginary = parseFloat(document.getElementById("num1i").value);
+      let num2real = parseFloat(document.getElementById("num2").value);
+      let num2imaginary = parseFloat(document.getElementById("num2i").value);
+
+      let res1 = document.getElementById("res1");
+      let res2imaginary = document.getElementById("res2");
+
+      res1.value = num1real + num2real;
+      res2imaginary.value = num1imaginary + num2imaginary;
+    }
+  </script>
+</head>
+  <body>
+    <input type="text" id="num1">
+    <input type="text" id="num1i"> <span>i</span>
+    <br>
+    <input type="text" id="num2">
+    <input type="text" id="num2i"> <span>i</span>
+    <br>
+    <button onclick="add()">Add</button>
+    <br>
+    <input type="text" id="res1">
+    <input type="text" id="res2"> <span>i</span>
+  </body>
+</html>

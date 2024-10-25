@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zadacha3</title>
+    <script>
+      class Cylinder {
+        constructor(radius, height) {
+          this.radius = radius;
+          this.height = height;
+        }
+
+        calculateVolume() {
+          return Math.PI * Math.pow(this.radius, 2) * this.height;
+        }
+      }
+
+      function calculateCylinderVolume() {
+        const radius = parseFloat(document.getElementById('radius').value);
+        const height = parseFloat(document.getElementById('height').value);
+        let result = document.getElementById("result");
+        const Cyl = new Cylinder(radius, height);
+        console.log(Cyl.calculateVolume());
+
+        result.innerText=Cyl.calculateVolume();
+      }
+
+    </script>
+</head>
+<body>
+  <label for="radius">Radius:</label>
+  <input type="number" id="radius" placeholder="Radius">
+
+  <label for="height">Height:</label>
+  <input type="number" id="height" placeholder="Height">
+
+  <button onclick="calculateCylinderVolume()">Calculate</button>
+  <p id="result">Result:</p>
+</body>
+</html>

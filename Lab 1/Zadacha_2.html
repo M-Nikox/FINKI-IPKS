@@ -1,0 +1,29 @@
+<!DOCTYPE html> <!--Matej Nikolovski 225011-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zadacha 2</title>
+    <script>
+        function print(phoneNumber) {
+            if (phoneNumber.slice(0, 3) === "070" || phoneNumber.slice(0, 3) === "071" || phoneNumber.slice(0, 3) === "072") {
+                console.log(
+                    phoneNumber.slice(0, 3) + "/" + phoneNumber.slice(3, 6) + "-" + phoneNumber.slice(6, 9) + " T-Mobile"
+                );
+            } else if (phoneNumber.slice(0, 3) === "075" || phoneNumber.slice(0, 3) === "076") {
+                console.log(
+                    phoneNumber.slice(0, 3) + "/" + phoneNumber.slice(3, 6) + "-" + phoneNumber.slice(6, 9) + " One"
+                );
+            } else if (phoneNumber.slice(0, 3) === "077" || phoneNumber.slice(0, 3) === "078") {
+                console.log(
+                    phoneNumber.slice(0, 3) + "/" + phoneNumber.slice(3, 6) + "-" + phoneNumber.slice(6, 9) + " Vip"
+                );
+            }
+        }
+        var phoneNumber=prompt("Enter a phone number in the format XXYYYZZZ");
+        print(phoneNumber);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

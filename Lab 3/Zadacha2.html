@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zadacha2</title>
+  <script>
+    function remove_array_element(arr, remove) {
+      return arr.filter(function(item) {
+        return item !== remove;
+      });
+    }
+
+    function runExample() {
+      let input = document.getElementById('input').value.split(',').map(function(item) {
+        return parseInt(item.trim(), 10);
+      });
+      let remove = parseInt(document.getElementById('remove').value.trim(), 10);
+      console.log(remove_array_element(input, remove));
+    }
+  </script>
+</head>
+<body>
+
+<label for="input">Input (use ,):</label>
+<input type="text" id="input">
+
+<label for="remove">Remove:</label>
+<input type="text" id="remove">
+
+<button onclick="runExample()">Remove Element</button>
+
+</body>
+</html>

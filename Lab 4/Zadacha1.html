@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zadacha1</title>
+  <style>
+    form {
+      display: flex;
+      flex-direction: column;
+      max-width: 300px;
+      margin-bottom: 20px;
+    }
+
+    label {
+      margin-bottom: 5px;
+    }
+
+    input,
+    select,
+    button {
+      margin-bottom: 10px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 30%;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid black;
+      text-align: center;
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const form = document.getElementById('dataForm');
+      const tableBody = document.getElementById('dataTableBody');
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const name = form.elements['name'].value;
+        const surname = form.elements['surname'].value;
+        const index = form.elements['index'].value;
+        const subject = form.elements['subject'].value;
+        const selectValue = form.elements['grade'].value;
+
+        const newData = {
+          name: name,
+          surname: surname,
+          index: index,
+          subject: subject,
+          selectValue: selectValue
+        };
+
+        data.push(newData);
+
+        const newRow = tableBody.insertRow();
+        for (const key in newData) {
+          const cell = newRow.insertCell();
+          cell.textContent = newData[key];
+        }
+
+        form.reset();
+      });
+    });
+
+    const data = [];
+  </script>
+</head>
+<body>
+
+<h1>Форма за внесување оцени</h1>
+
+<form id="dataForm">
+  <label for="name">Име:</label>
+  <input type="text" id="name" name="name" required>
+
+  <label for="surname">Презиме:</label>
+  <input type="text" id="surname" name="surname" required>
+
+  <label for="index">Индекс:</label>
+  <input type="text" id="index" name="index" required>
+
+  <label for="subject">Предмет:</label>
+  <input type="text" id="subject" name="subject" required>
+
+  <label for="grade">Оцена:</label>
+  <select id="grade" name="grade" required>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+  </select>
+
+  <button type="submit">Внеси</button>
+</form>
+
+<table>
+  <thead>
+  <tr>
+    <th>Име</th>
+    <th>Презиме</th>
+    <th>Индекс</th>
+    <th>Предмет</th>
+    <th>Оцена</th>
+  </tr>
+  </thead>
+  <tbody id="dataTableBody"></tbody>
+</table>
+
+</body>
+</html>

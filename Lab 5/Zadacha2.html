@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <script>
+  </script>
+</head>
+<body>
+<div>
+  <div style="text-align:right; float:left">
+    <label id="obid">Обиди 0</label>
+    <p>Погодок: <input id="guess" style="width:150px"/></p>
+    <button>Погоди</button>
+    <button>Од почеток</button>
+  </div>
+</div>
+<br/>
+<div id="prikaz" style="clear: both">
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    let targetNumber;
+    let attempts = 0;
+
+    function generateTargetNumber() {
+      return Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
+    }
+
+    function checkGuess(userGuess) {
+      const targetDigits = targetNumber.toString().split('');
+      const userDigits = userGuess.split('');
+
+      let correctDigits = 0;
+      let correctPositions = 0;
+
+      for (let i = 0; i < 4; i++) {
+        if (userDigits[i] === targetDigits[i]) {
+          correctPositions++;
+        } else if (targetDigits.includes(userDigits[i])) {
+          correctDigits++;
+        }
+      }
+
+      return { correctDigits, correctPositions };
+    }
+
+    function startGame() {
+      targetNumber = generateTargetNumber();
+      attempts = 0;
+      document.getElementById('attempts').textContent = 'Обиди 0';
+      document.getElementById('prikaz').textContent = '';
+    }
+
+    function guess() {
+      const userGuess = document.getElementById('guess').value;
+
+      if (!/^\d{4}$/.test(userGuess)) { //^ - start, \d digit, {4} 4 pati, $ kraj
+        alert('Внесете валиден четирицифрен број.');
+        return;
+      }
+
+      attempts++;
+
+      const result = checkGuess(userGuess);
+
+      const resultMessage = `Има: ${result.correctDigits}, на место ${result.correctPositions}`;
+      document.getElementById('prikaz').innerHTML += resultMessage + '<br>';
+
+      if (result.correctPositions === 4) {
+        document.getElementById('prikaz').innerHTML += 'Погодивте! Цел број: ' + targetNumber + '<br>';
+        document.getElementById('guessButton').disabled = true;
+      } else if (attempts === 10) {
+        document.getElementById('prikaz').innerHTML += 'Не успеавте да го погодите цел бројот. Цел број: ' + targetNumber + '<br>';
+        document.getElementById('guessButton').disabled = true;
+      } else {
+        document.getElementById('attempts').textContent = `Обиди ${attempts}`;
+      }
+
+      document.getElementById('guess').value = '';
+    }
+
+    function restartGame() {
+      startGame();
+      document.getElementById('guess').value = '';
+      document.getElementById('guessButton').disabled = false;
+    }
+
+    document.querySelector('#guessButton').addEventListener('click', guess);
+    document.querySelector('#restartButton').addEventListener('click', restartGame);
+
+    startGame();
+  });
+</script>
+</body>
+</html>

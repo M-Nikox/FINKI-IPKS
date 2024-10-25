@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zadacha1</title>
+    <script>
+        function removeDuplicates(list) {
+            let uniqueList = [];
+            for (let i = 0; i < list.length; i++) {
+                if (uniqueList.indexOf(list[i]) === -1) {
+                    uniqueList.push(list[i]);
+                }
+            }
+            return uniqueList;
+        }
+
+        function runExample() {
+            let input = document.getElementById('input');
+            let numbers = input.value.split(',').map(function(item) {
+                return parseInt(item.trim(), 10);
+            });
+
+            let result = removeDuplicates(numbers);
+            document.getElementById('output').textContent = 'Output List: ' + result.join(', ');
+        }
+        
+    </script>
+</head>
+<body>
+    <label for="input">Input (use , ):</label>
+    <input type="text" id="input" placeholder="1,2,3,4,5">
+
+    <button onclick="runExample()">Remove Duplicates</button>
+
+    <p id="output"></p>
+</body>
+</html>

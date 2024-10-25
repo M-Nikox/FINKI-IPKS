@@ -1,0 +1,35 @@
+<!DOCTYPE html> <!--Matej Nikolovski 225011-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zadacha 1</title>
+    <script>
+        var prompt=prompt("Enter a 4 digit number");
+        var inNumber=parseInt(prompt);
+        if (prompt < 1000 || prompt > 9999){
+                alert("Number is out of range!");
+        } else {
+            const number = inNumber.toString();
+            if (number[0] === number[3] && number[1]===number[2]){
+                alert(inNumber + " is a palindrome!");
+            } else {
+                alert(inNumber + " is not a palindrome!");
+            }
+        }
+        /* vtor nachin
+        var digits = [];
+        digits.push(Math.floor(inNumber / 1000) % 10);
+        digits.push(Math.floor(inNumber / 100) % 10);
+        digits.push(Math.floor(inNumber / 10) % 10);
+        digits.push(inNumber % 10);
+        if (digits[0] === digits[3] && digits[1]===digits   [2]){
+            alert(inNumber + " is a palindrome!");
+        } else {
+            alert(inNumber + " is not a palindrome!");
+        */
+        </script>
+        </head>
+        <body>
+
+        </body>
+        </html>

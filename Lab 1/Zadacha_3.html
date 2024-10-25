@@ -1,0 +1,37 @@
+<!DOCTYPE html> <!--Matej Nikolovski 225011-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zadacha 3</title>
+    <script>
+        var str1=prompt("Enter string 1");
+        var str2=prompt("Enter string 2");
+        var str3=prompt("Enter string 3");
+        var strings=[str1,str2,str3];
+        var longest="";
+
+        for (var i=0; i<strings.length; i++){
+            var currString=strings[i];
+            var currWord="";
+
+            for (var j=0; j<currString.length; j++){
+                if (currString[j]===" " || currString[j]===null){
+                    if (currWord.length > longest.length){
+                        longest=currWord;
+                    }
+                    currWord="";
+                } else {
+                    currWord+=currString[j];
+                }
+            }
+            if (currWord.length>longest.length){
+                longest=currWord;
+            }
+        }
+        console.log(longest);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

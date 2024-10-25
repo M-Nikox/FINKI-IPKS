@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zadacha4</title>
+    <script>
+      class Book {
+        constructor(title, author, alreadyRead) {
+          this.title = title;
+          this.author = author;
+          this.alreadyRead = alreadyRead;
+        }
+      }
+
+      const books = [];
+
+      function addBook() {
+        const title = prompt('Title:');
+        const author = prompt('Author:');
+        const alreadyRead = confirm('Read?');
+
+        const newBook = new Book(title, author, alreadyRead);
+        books.push(newBook);
+
+        displayBooks();
+      }
+
+      function displayBooks() {
+        const bookList = document.getElementById('bookList');
+        bookList.innerHTML = '';
+
+        for (const book of books) {
+          const bookInfo = `"${book.title}" by ${book.author}`;
+          const listItem = document.createElement('li');
+
+          if (book.alreadyRead) {
+            listItem.textContent = `You already read ${bookInfo}`;
+          } else {
+            listItem.textContent = `You still need to read ${bookInfo}`;
+          }
+
+          bookList.appendChild(listItem);
+        }
+      }
+    </script>
+  </head>
+  <body>
+
+  <button onclick="addBook()">Add Book</button>
+  <ul id="bookList"></ul>
+
+</body>
+</html>

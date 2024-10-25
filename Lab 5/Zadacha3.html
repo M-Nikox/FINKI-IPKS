@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <script>
+    window.onload = function() {
+      let firstCard = null;
+      let secondCard = null;
+
+      function cardClicked(event) {
+        if (firstCard === null) {
+          firstCard = event.target;
+          firstCard.src = firstCard.getAttribute('data-src');
+        } else if (secondCard === null) {
+          secondCard = event.target;
+          secondCard.src = secondCard.getAttribute('data-src');
+
+          if (firstCard.getAttribute('data-src') !== secondCard.getAttribute('data-src')) {
+            firstCard.src = 'covered.png';
+            firstCard = secondCard;
+            secondCard = null;
+          } else {
+            firstCard = null;
+            secondCard = null;
+          }
+        } else {
+          firstCard.src = 'covered.png';
+          firstCard = null;
+          secondCard = null;
+        }
+      }
+
+      document.querySelectorAll('td > img').forEach(img => {
+        img.addEventListener('click', cardClicked);
+      });
+
+      document.querySelector('input[type="submit"]').addEventListener('click', () => {
+        document.querySelectorAll('td > img').forEach(img => {
+          img.src = 'covered.png';
+        });
+        firstCard = null;
+        secondCard = null;
+      });
+    }
+  </script>
+</head>
+<body>
+<h1>Meморија</h1>
+<div style="text-align:left; float:left">
+  <table border="1">
+    <tr>
+      <td id="11"><img src="covered.png" data-src="mouse.png"/></td>
+      <td id="12"><img src="covered.png" data-src="piano.png"/></td>
+      <td id="13"><img src="covered.png" data-src="piano.png"/></td>
+      <td id="14"><img src="covered.png" data-src="donut.png"/></td>
+    </tr>
+    <tr>
+      <td id="21"><img src="covered.png" data-src="rim.png"/></td>
+      <td id="22"><img src="covered.png" data-src="bottle.png"/></td>
+      <td id="23"><img src="covered.png" data-src="mouse.png"/></td>
+      <td id="24"><img src="covered.png" data-src="bottle.png"/></td>
+    </tr>
+    <tr>
+      <td id="31"><img src="covered.png" data-src="lego.png"/></td>
+      <td id="32"><img src="covered.png" data-src="rim.png"/></td>
+      <td id="33"><img src="covered.png" data-src="toy.png"/></td>
+      <td id="34"><img src="covered.png" data-src="planet.png"/></td>
+    </tr>
+    <tr>
+      <td id="41"><img src="covered.png" data-src="donut.png"/></td>
+      <td id="42"><img src="covered.png" data-src="toy.png"/></td>
+      <td id="43"><img src="covered.png" data-src="planet.png"/></td>
+      <td id="44"><img src="covered.png" data-src="lego.png"/></td>
+    </tr>
+  </table>
+  <input type="submit" value="RESET"/>
+</div>
+<br/>
+</body>
